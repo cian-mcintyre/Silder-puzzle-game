@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack elements vertically */
+    height: 100vh;
+    margin: 0; /* Ensure there is no default margin */
+    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif; /* Updated font family */
+}
+
+h1 {
+    color: #333;
+    margin: 20px 0 10px; /* Add spacing around the header */
+    font-weight: 500; /* Medium font weight for a little emphasis */
+}
+
+#puzzle-container {
+    width: 306px; /* 100px * 3 + 2px * 3 gaps */
+    height: 306px; /* Same as width */
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 2px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative; /* Allows absolute positioning relative to this container */
+}
+
+
+#button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Bootstrap blue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
+    margin-top: 20px; /* Add some space above the button */
+}
+
+#button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+#button:active {
+    transform: scale(0.95); /* Slight shrink when active */
+}
+
+.tile {
+    background-size: cover;
+    width: 100%; /* Make sure each tile fills its cell */
+    height: 100%; /* Make sure each tile fills its cell */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+    
+}
+
+.tile:active {
+    transform: scale(0.95); /* Visual feedback for clicks */
+}
+.completed-animation {
+    animation: pop 0.5s ease-in-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#solved-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: green;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    display: none;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+
+#status-indicator {
+    margin-top: 20px;
+    color: #333;
+    font-size: 16px;
+}
+
+.solvable {
+    color: green;
+}
+
+.unsolvable {
+    color: red;
+}
+
